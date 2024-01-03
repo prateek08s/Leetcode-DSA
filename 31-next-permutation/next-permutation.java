@@ -1,55 +1,50 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int length = nums.length;
-        int index = -1;
+        int ind1 = -1; // Index 1 for the breaking point
+        int ind2 = -1; // Index 2 for the next greater element
 
-// Find the first element from the right that is smaller than the element to its right
-        for (int i = length - 2; i >= 0; i--) 
-        {
-            if (nums[i] < nums[i + 1]) 
-            {
-                index = i;
+        // Step 1: Find the breaking point
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                ind1 = i;
                 break;
             }
         }
 
-// If no such element is found, the array is in descending order, so reverse it
-        if (index == -1) 
-        {
-            reverse(nums, 0, length - 1);
-        } 
-        else 
-        {
-// Find the smallest element to the right of index that is greater than nums[index]
-            for (int i = length - 1; i > index; i--) 
-            {
-                if (nums[i] > nums[index]) 
-                {
-                    // Swap the elements at index and i
-                    swap(nums, index, i);
+        // If there is no breaking point, reverse the entire array
+        if (ind1 == -1) {
+            reverse(nums, 0);
+        } else {
+            // Step 2: Find the next greater element and swap with ind1
+            for (int i = nums.length - 1; i >= 0; i--) {
+                if (nums[i] > nums[ind1]) {
+                    ind2 = i;
                     break;
                 }
             }
-            
-            // Reverse the subarray to the right of index
-            reverse(nums, index + 1, length - 1);
+
+            swap(nums, ind1, ind2);
+
+            // Step 3: Reverse the rest of the array to the right of ind1
+            reverse(nums, ind1 + 1);
         }
     }
 
-    private void swap(int[] nums, int i, int j) 
-    {
+    // Function to swap two elements in the array
+    void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
 
-    private void reverse(int[] nums, int start, int end) 
-    {
-        while (start < end) 
-        {
-            swap(nums, start, end);
-            start++;
-            end--;
+    // Function to reverse the array from the given start index
+    void reverse(int[] nums, int start) {
+        int i = start;
+        int j = nums.length - 1;
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
         }
     }
 }
