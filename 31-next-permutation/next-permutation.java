@@ -12,12 +12,17 @@ class Solution {
         }
 
         // If there is no breaking point, reverse the entire array
-        if (ind1 == -1) {
-            reverse(nums, 0); // Reversing the entire array gives the smallest permutation
-        } else {
+        if (ind1 == -1) 
+        {
+        reverse(nums, 0); // Reversing the entire array gives the smallest permutation
+        } 
+        else 
+        {
             // Step 2: Find the next greater element and swap with ind1
-            for (int i = nums.length - 1; i >= 0; i--) {
-                if (nums[i] > nums[ind1]) {
+            for (int i = nums.length - 1; i >= 0; i--) 
+            {
+                if (nums[i] > nums[ind1]) 
+                {
                     ind2 = i;
                     break;
                 }
@@ -31,17 +36,20 @@ class Solution {
     }
 
     // Function to swap two elements in the array
-    void swap(int[] nums, int i, int j) {
+    void swap(int[] nums, int i, int j) 
+    {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
 
     // Function to reverse the array from the given start index
-    void reverse(int[] nums, int start) {
+    void reverse(int[] nums, int start) 
+    {
         int i = start;
         int j = nums.length - 1;
-        while (i < j) {
+        while (i < j) 
+        {
             swap(nums, i, j);
             i++;
             j--;
