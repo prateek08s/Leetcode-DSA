@@ -13,7 +13,7 @@ class Solution {
 
         // If there is no breaking point, reverse the entire array
         if (ind1 == -1) {
-            reverse(nums, 0);
+            reverse(nums, 0); // Reversing the entire array gives the smallest permutation
         } else {
             // Step 2: Find the next greater element and swap with ind1
             for (int i = nums.length - 1; i >= 0; i--) {
