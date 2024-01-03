@@ -1,11 +1,14 @@
 class Solution {
-    public void nextPermutation(int[] nums) {
+    public void nextPermutation(int[] nums) 
+    {
         int ind1 = -1; // Index 1 for the breaking point
         int ind2 = -1; // Index 2 for the next greater element
 
         // Step 1: Find the breaking point
-        for (int i = nums.length - 2; i >= 0; i--) {
-            if (nums[i] < nums[i + 1]) {
+        for (int i = nums.length - 2; i >= 0; i--) 
+        {
+            if (nums[i] < nums[i + 1]) 
+            {
                 ind1 = i;
                 break;
             }
